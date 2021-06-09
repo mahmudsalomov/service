@@ -33,25 +33,21 @@ public class LoanService {
     public double creditCalculator(double loanAmount, Loan loan){
         double x = ((loanAmount * loan.getAnnual_loan_interest()) / (100 * loan.getDuration()))
                 + loanAmount / loan.getDuration();
-        System.out.println(x+" kredit 1 yillik");
         return x;
     }
 
-    // All
+
     public double creditCalculatorDesc(double finalAmount, Loan loan){
         double x = finalAmount*loan.getDuration()/(1+loan.getAnnual_loan_interest()/100);
-//        System.out.println(x+" kredit hammasi");
         return x;
     }
 
     public double income(double salary){
-        System.out.println(12*(salary-salary*0.3)+" income per year");
         return 12*(salary-salary*0.3);
     }
 
 
     public boolean check(double salary, double loanAmount, Loan loan){
-//        System.out.println(creditCalculator(loanAmount, loan.getAnnual_loan_interest(), loan.getDuration()));
 
         return !(creditCalculator(loanAmount,
                 loan) > income(salary));
@@ -59,10 +55,7 @@ public class LoanService {
 
     public Double findRecommendSumma(double salary, Loan loan){
         double b = income(salary);
-        System.out.println(b+" XATO income");
-        System.out.println(creditCalculator(loan.getStartingAmount(),loan)+" XATO credit");
         if (b>= creditCalculator(loan.getStartingAmount(),loan)){
-            System.out.println(creditCalculatorDesc(b,loan)+" tavsiya");
             return creditCalculatorDesc(b,loan);
         } else return null;
     }

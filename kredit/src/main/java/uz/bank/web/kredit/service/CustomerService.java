@@ -40,7 +40,6 @@ public class CustomerService {
         try {
 
             customer=customerRepository.findByUsername(customer.getUsername());
-//            System.out.println(customer);
                 if (customer.getPassport()==null){
 
 
