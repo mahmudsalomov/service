@@ -74,7 +74,7 @@ public class Converter {
         }};
     }
 
-
+ // For data transfer objects
     public LoanOrderDto orderToDto(LoanOrder order) {
         return LoanOrderDto
                 .builder()

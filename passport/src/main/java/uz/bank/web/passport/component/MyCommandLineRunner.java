@@ -47,6 +47,9 @@ public class MyCommandLineRunner implements CommandLineRunner {
             System.out.println(userRepository.save(user));
         }
 
+
+
+        // Client for service 2
         Role apiClient= Role.builder()
                 .roleName(RoleName.ROLE_API_CLIENT)
                 .build();

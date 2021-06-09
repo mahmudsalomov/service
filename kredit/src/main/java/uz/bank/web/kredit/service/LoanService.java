@@ -39,7 +39,7 @@ public class LoanService {
 
     // All
     public double creditCalculatorDesc(double finalAmount, Loan loan){
-        double x = (finalAmount-finalAmount*loan.getAnnual_loan_interest()/100)*loan.getDuration();
+        double x = finalAmount*loan.getDuration()/(1+loan.getAnnual_loan_interest()/100);
 //        System.out.println(x+" kredit hammasi");
         return x;
     }
@@ -59,6 +59,8 @@ public class LoanService {
 
     public Double findRecommendSumma(double salary, Loan loan){
         double b = income(salary);
+        System.out.println(b+" XATO income");
+        System.out.println(creditCalculator(loan.getStartingAmount(),loan)+" XATO credit");
         if (b>= creditCalculator(loan.getStartingAmount(),loan)){
             System.out.println(creditCalculatorDesc(b,loan)+" tavsiya");
             return creditCalculatorDesc(b,loan);
@@ -91,9 +93,7 @@ public class LoanService {
             }
             else {
                 Double recommendSumma = findRecommendSumma(loanRequestDto.getSalary(), loan.get());
-                if (recommendSumma!=null) return converter.apiSuccess("Kiritilgan kredit miqdoriga daromadingiz yetmaydi. Sizga tavsiya qilinadigan kredit miqdori: "
-                +recommendSumma, loan
-                );
+                if (recommendSumma!=null) return converter.apiSuccess("Kiritilgan kredit miqdoriga daromadingiz yetmaydi. Sizga tavsiya qilinadigan kredit miqdori: " +(Math.round(recommendSumma)), loan);
                 else return converter.apiError("Afsuski bu kredit sizning daromadingizga mos emas.",loan);
             }
 

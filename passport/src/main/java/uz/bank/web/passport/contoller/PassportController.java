@@ -13,6 +13,8 @@ public class PassportController {
     @Autowired
     private PassportService passportService;
 
+
+    // Passport info using passport series and number
     @GetMapping("/info")
     public HttpEntity<?> info(@RequestParam String series, @RequestParam String number){
         return ResponseEntity.ok(passportService.info(series,number));

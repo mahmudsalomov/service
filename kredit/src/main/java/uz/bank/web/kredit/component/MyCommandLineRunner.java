@@ -62,7 +62,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
                 .builder()
                 .name("Ipoteka")
                 .type(CreditType.IPOTECA)
-                .startingAmount(99999999.0)
+                .startingAmount(100000000.0)
                 .endingAmount(3000000000.0)
                 .duration(10)
                 .annual_loan_interest(30)
@@ -75,7 +75,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
                 .name("Ta'lim")
                 .type(CreditType.EDUCATION)
                 .startingAmount(15000000.0)
-                .endingAmount(179999999.0)
+                .endingAmount(180000000.0)
                 .duration(5)
                 .annual_loan_interest(18)
                 .build();

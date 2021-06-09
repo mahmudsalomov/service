@@ -15,6 +15,8 @@ import uz.bank.web.kredit.repository.CustomerRepository;
 import uz.bank.web.kredit.repository.PassportRepository;
 import uz.bank.web.kredit.utils.Converter;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
 
@@ -83,6 +85,13 @@ public class CustomerService {
     }
 
 
-
-
+    public ApiResponse getAll() {
+        try {
+            List<Customer> all = customerRepository.findAll();
+            return converter.apiSuccess(all);
+        }catch (Exception e){
+            e.printStackTrace();
+            return converter.apiError();
+        }
+    }
 }
